@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.*?>
+<?import java.net.URL?>
+
+<HBox prefHeight="700.0" prefWidth="1100.0" styleClass="main-bg"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myapp.controllers.EmployeeDashboardController">
+
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+
+    <children>
+        <VBox prefWidth="250.0" styleClass="sidebar" spacing="20.0">
+            <padding><Insets top="40.0" left="15.0" right="15.0" bottom="20.0"/></padding>
+            <children>
+                <ImageView fitHeight="50.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                    <image><Image url="@../images/logo.png" /></image>
+                </ImageView>
+
+                <Label text="ESPACE PERSONNEL" textFill="WHITE" style="-fx-font-weight: bold;" />
+                <Separator opacity="0.2" />
+
+                <VBox spacing="10.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Button text="📈 Mon Dashboard" maxWidth="Infinity" styleClass="button-menu" prefHeight="45.0" />
+                        <Button text="📩 Mes Tâches" onAction="#handleShowTasks" maxWidth="Infinity" styleClass="button-menu" prefHeight="45.0" />
+                    </children>
+                </VBox>
+
+                <Button text="Se Déconnecter" onAction="#handleLogout" maxWidth="Infinity" styleClass="button-logout" prefHeight="40.0" />
+            </children>
+        </VBox>
+
+        <VBox HBox.hgrow="ALWAYS" spacing="30.0">
+            <padding><Insets top="40.0" left="40.0" right="40.0" bottom="40.0"/></padding>
+            <children>
+                <HBox alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Tableau de Bord" styleClass="label-header" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label fx:id="lblDate" text="Date du jour" />
+                    </children>
+                </HBox>
+
+                <HBox spacing="30.0">
+                    <VBox spacing="20.0" styleClass="card" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/>
+                    </padding>
+                    <VBox spacing="20.0" styleClass="card" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/>
+                        </padding>
+                        <children>
+                            <HBox alignment="CENTER_LEFT">
+                                <children>
+                                    <Label text="Informations de l'employé" styleClass="label-title"/>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <Label fx:id="lblSociete" text="EMSI"
+                                           style="-fx-font-weight: bold; -fx-text-fill: #1976D2;"/>
+                                </children>
+                            </HBox>
+
+                            <Separator/>
+
+                            <GridPane vgap="15.0" hgap="20.0">
+                                <columnConstraints>
+                                    <ColumnConstraints minWidth="120.0"/>
+                                    <ColumnConstraints hgrow="ALWAYS"/>
+                                </columnConstraints>
+                                <children>
+                                    <Label text="Nom :" GridPane.rowIndex="0"/>
+                                    <Label fx:id="lblNom" text="..." GridPane.rowIndex="0" GridPane.columnIndex="1"
+                                           style="-fx-font-weight: bold;"/>
+
+                                    <Label text="Prénom :" GridPane.rowIndex="1"/>
+                                    <Label fx:id="lblPrenom" text="..." GridPane.rowIndex="1"
+                                           GridPane.columnIndex="1" style="-fx-font-weight: bold;"/>
+
+                                    <Label text="Poste actuel :" GridPane.rowIndex="2"/>
+                                    <Label fx:id="lblPoste" text="..." GridPane.rowIndex="2"
+                                           GridPane.columnIndex="1" textFill="#1976D2"/>
+
+                                    <Label text="Salaire :" GridPane.rowIndex="3"/>
+                                    <Label fx:id="lblSalaire" text="0.00 DH" GridPane.rowIndex="3"
+                                           GridPane.columnIndex="1"
+                                           style="-fx-font-size: 18; -fx-text-fill: #27ae60; -fx-font-weight: bold;"/>
+                                </children>
+                            </GridPane>
+                        </children>
+                    </VBox>
+                    </VBox>
+
+                    <VBox alignment="CENTER" prefWidth="250.0" styleClass="card" spacing="15.0">
+                        <padding>
+                            <Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/>
+                        </padding>
+                        <children>
+                            <Label text="PERFORMANCE" styleClass="label-title"/>
+                            <Label fx:id="lblPerformance" text="A+" textFill="#1976D2"
+                                   style="-fx-font-size: 50; -fx-font-weight: bold;"/>
+                            <Label text="Statut : Excellent"/>
+                        </children>
+                    </VBox>
+
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</HBox>

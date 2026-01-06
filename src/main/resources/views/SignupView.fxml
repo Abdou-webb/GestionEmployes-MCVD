@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<StackPane prefHeight="600.0" prefWidth="800.0" styleClass="main-bg"
+           xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21"
+           fx:controller="com.myapp.controllers.SignupController">
+
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+
+    <children>
+        <VBox alignment="CENTER" maxWidth="400.0" spacing="20.0" styleClass="card">
+            <padding>
+                <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+            </padding>
+            <children>
+                <ImageView fitHeight="60.0" preserveRatio="true">
+                    <image><Image url="@../images/logo.png" /></image>
+                </ImageView>
+
+                <VBox alignment="CENTER" spacing="5.0">
+                    <children>
+                        <Label text="Créer un compte" styleClass="label-header" style="-fx-font-size: 22;" />
+                        <Label text="Veuillez remplir vos informations" style="-fx-text-fill: #7f8c8d;" />
+                    </children>
+                </VBox>
+
+                <VBox spacing="12.0">
+                    <children>
+                        <VBox spacing="5.0">
+                            <Label text="Nom d'utilisateur :" styleClass="label-title" style="-fx-font-size: 12;" />
+                            <TextField fx:id="txtUsername" promptText="Identifiant souhaité" prefHeight="35.0" />
+                        </VBox>
+
+                        <VBox spacing="5.0">
+                            <Label text="ID Employé :" styleClass="label-title" style="-fx-font-size: 12;" />
+                            <TextField fx:id="txtEmployeeId" promptText="Ex: 12" prefHeight="35.0" />
+                        </VBox>
+
+                        <VBox spacing="5.0">
+                            <Label text="Mot de passe :" styleClass="label-title" style="-fx-font-size: 12;" />
+                            <PasswordField fx:id="txtPassword" promptText="••••••••" prefHeight="35.0" />
+                        </VBox>
+
+                        <VBox spacing="5.0">
+                            <Label text="Confirmer :" styleClass="label-title" style="-fx-font-size: 12;" />
+                            <PasswordField fx:id="txtConfirmPassword" promptText="••••••••" prefHeight="35.0" />
+                        </VBox>
+                    </children>
+                </VBox>
+
+                <VBox spacing="15.0" alignment="CENTER">
+                    <children>
+                        <Button text="Créer mon compte" onAction="#handleSignup" maxWidth="Infinity"
+                                prefHeight="45.0" styleClass="button-primary" />
+
+                        <Hyperlink text="Déjà inscrit ? Se connecter" onAction="#goToLogin" />
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
+</StackPane>
