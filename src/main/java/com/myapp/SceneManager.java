@@ -27,7 +27,7 @@ public class SceneManager {
         primaryStage.setTitle(title);
         primaryStage.setScene(scene);
 
-        // Maximiser la fenêtre pour l'effet plein écran
+        // pour l'effet plein ecran
         primaryStage.setMaximized(true);
         primaryStage.show();
     }

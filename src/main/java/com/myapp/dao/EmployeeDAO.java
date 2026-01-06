@@ -33,14 +33,14 @@ public class EmployeeDAO {
         return liste;
     }
 
-    // Sauvegarde de la liste (utilisé après un ajout/modif/suppr)
+    // Sauvegarde de la liste c'est apres ajout modif ou supprim
     public void synchroniserListe(List<Employe> liste) {
         for (Employe e : liste) {
             sauvegarderOuMettreAJour(e);
         }
     }
 
-    // Logique simplifiée : Si l'ID existe on UPDATE, sinon on INSERT
+    //  Si l'ID existe on UPDATE, sinon on INSERT
     public void sauvegarderOuMettreAJour(Employe e) {
         if (findById(e.getId()) == null) {
             // Cas d'un nouvel employé

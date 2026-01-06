@@ -13,16 +13,18 @@ public abstract class Personne {
         this.adresse = adresse;
     }
 
-    // GETTERS : Indispensables pour que JavaFX affiche les données dans le tableau
+    // GETTERS
     public int getId() { return id; }
     public String getNom() { return nom; }
     public String getPrenom() { return prenom; }
 
-    // SETTERS : Utiles pour la modification
+    // SETTERS
     public void setId(int id) { this.id = id; }
     public void setNom(String nom) { this.nom = nom; }
     public void setPrenom(String prenom) { this.prenom = prenom; }
 
-
-    public abstract void afficherInfos();
+    public abstract void afficherInfos();{
+    }
 }
+
+

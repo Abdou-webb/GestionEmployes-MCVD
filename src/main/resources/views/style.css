@@ -58,7 +58,7 @@
     -fx-font-weight: bold;
     -fx-text-fill: #7f8c8d;
 }
-/* Boutons spécifiques à l'administration */
+
 .btn-success {
     -fx-background-color: #27ae60;
     -fx-text-fill: white;
@@ -87,7 +87,7 @@
 }
 .btn-info:hover { -fx-background-color: #2980b9; }
 
-/* Style de la TableView */
+
 .table-view {
     -fx-background-color: transparent;
     -fx-border-color: #e0e0e0;

@@ -5,6 +5,7 @@ import com.myapp.dao.EmployeeDAO;
 import com.myapp.dao.TacheDAO;
 import com.myapp.models.Employe;
 import com.myapp.models.Tache;
+import com.myapp.services.TacheService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -17,7 +18,7 @@ import java.util.Locale;
 public class EmployeeDashboardController {
 
     @FXML private Label lblNom, lblPrenom, lblPoste, lblSalaire, lblPerformance, lblSociete, lblDate;
-
+    private final TacheService tacheService = new TacheService();
     private static int loggedEmployeeId;
     private final EmployeeDAO employeeDAO = new EmployeeDAO();
     private final TacheDAO tacheDAO = new TacheDAO();
@@ -60,26 +61,26 @@ public class EmployeeDashboardController {
 
     @FXML
     private void handleShowTasks() {
-        List<Tache> taches = tacheDAO.recupererTachesParEmploye(loggedEmployeeId);
+        // 2. On utilise la méthode du service (qui elle-même appelle le DAO)
+        List<Tache> taches = tacheService.recupererTachesEmploye(loggedEmployeeId);
 
         StringBuilder sb = new StringBuilder();
-
         if (taches.isEmpty()) {
-            sb.append("Vous n'avez aucune tâche assignée pour le moment.");
+            sb.append("Vous n'avez aucune tâche assignée.");
         } else {
-            sb.append("Voici vos dernières directives :\n\n");
+            sb.append("Voici vos directives :\n\n");
             for (Tache t : taches) {
                 sb.append("📍 ").append(t.getDescription())
-                        .append("\n📅 Envoyée le : ").append(t.getDateSaisie())
-                        .append("\n----------------------------------\n");
+                        .append("\n📅 Date : ").append(t.getDateSaisie())
+                        .append("\n------------------\n");
             }
         }
 
+        // Affichage de l'alerte (inchangé)
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Messagerie Interne");
-        alert.setHeaderText("Directives de l'Administration");
+        alert.setTitle("Messagerie");
+        alert.setHeaderText("Directives Administration");
         alert.setContentText(sb.toString());
-        alert.getDialogPane().setStyle("-fx-font-family: 'Segoe UI'; -fx-font-size: 14px;");
         alert.showAndWait();
     }
 }

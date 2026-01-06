@@ -1,10 +1,10 @@
 package com.myapp.controllers;
 
 import com.myapp.SceneManager;
-import com.myapp.dao.EmployeeDAO;
-import com.myapp.dao.UserDAO;
 import com.myapp.models.Employe;
 import com.myapp.models.User;
+import com.myapp.services.UserService;
+import com.myapp.services.EmployeeService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -12,8 +12,9 @@ public class SignupController {
     @FXML private TextField txtUsername, txtEmployeeId;
     @FXML private PasswordField txtPassword, txtConfirmPassword;
 
-    private final UserDAO userDAO = new UserDAO();
-    private final EmployeeDAO employeeDAO = new EmployeeDAO();
+    // UTILISATION DES SERVICES
+    private final UserService userService = new UserService();
+    private final EmployeeService employeeService = new EmployeeService();
 
     @FXML
     private void handleSignup() throws Exception {
@@ -23,32 +24,35 @@ public class SignupController {
         String empIdStr = txtEmployeeId.getText().trim();
 
         if (username.isEmpty() || password.isEmpty() || empIdStr.isEmpty()) {
-            showAlert(Alert.AlertType.WARNING, "Attention", "Tous les champs sont obligatoires.");
+            showAlert("Champs vides", "Veuillez remplir tous les champs.");
             return;
         }
 
         if (!password.equals(confirm)) {
-            showAlert(Alert.AlertType.ERROR, "Erreur", "Les mots de passe ne correspondent pas.");
+            showAlert("Erreur", "Les mots de passe ne correspondent pas.");
             return;
         }
 
         try {
             int employeeId = Integer.parseInt(empIdStr);
-            Employe emp = employeeDAO.findById(employeeId);
+
+
+            Employe emp = employeeService.trouverEmploye(employeeId);
 
             if (emp == null) {
-                showAlert(Alert.AlertType.ERROR, "ID Invalide", "Cet ID employé n'existe pas dans la base.");
+                showAlert("ID Invalide", "Cet employé n'existe pas dans nos registres.");
                 return;
             }
 
+            // On demande au Service User de créer le compte
             User newUser = new User(username, password, "EMPLOYEE", employeeId, false);
-            userDAO.creerCompteUtilisateur(newUser);
+            userService.creerCompte(newUser);
 
-            showAlert(Alert.AlertType.INFORMATION, "Succès", "Compte créé pour " + emp.getNom());
+            showAlert("Succès", "Compte créé avec succès !");
             SceneManager.switchScene("LoginView.fxml", "Connexion");
 
         } catch (NumberFormatException e) {
-            showAlert(Alert.AlertType.ERROR, "Format ID", "L'ID doit être un nombre.");
+            showAlert("Erreur Format", "L'ID doit être un nombre.");
         }
     }
 
@@ -56,8 +60,8 @@ public class SignupController {
         SceneManager.switchScene("LoginView.fxml", "Connexion");
     }
 
-    private void showAlert(Alert.AlertType type, String title, String content) {
-        Alert alert = new Alert(type);
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);

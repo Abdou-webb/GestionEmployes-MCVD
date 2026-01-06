@@ -13,7 +13,7 @@ public class Tache {
         this.dateSaisie = dateSaisie;
     }
 
-    // IL FAUT CES MÉTHODES POUR QUE LE DAO FONCTIONNE :
+
     public int getId() { return id; }
     public int getEmployeeId() { return employeeId; }
     public String getDescription() { return description; }

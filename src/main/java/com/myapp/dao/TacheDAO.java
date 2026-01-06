@@ -26,7 +26,7 @@ public class TacheDAO {
 
     public List<Tache> recupererTachesParEmploye(int empId) {
         List<Tache> list = new ArrayList<>();
-        // On trie par date pour afficher la plus récente en premier
+        // On trie par date pour afficher la plus recente en ordre
         String sql = "SELECT * FROM taches WHERE employee_id = ? ORDER BY date_saisie DESC";
 
         try (Connection conn = DatabaseConnection.getConnection();

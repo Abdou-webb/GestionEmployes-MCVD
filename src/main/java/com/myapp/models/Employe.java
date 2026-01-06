@@ -7,7 +7,7 @@ public class Employe extends Personne {
 
     public Employe(int id, String nom, String prenom, String adresse, String poste, double salaire) {
         super(nom, prenom, adresse);
-        this.id = id; // IMPORTANT : Assigne l'ID saisi par l'admin
+        this.id = id; // assigne l'id saisis par admin
         this.poste = poste;
         this.salaire = salaire;
     }
@@ -17,7 +17,7 @@ public class Employe extends Personne {
     public String getPoste() { return poste; }
     public double getSalaire() { return salaire; }
 
-    // Setters (Nécessaires pour la modification et l'affichage)
+    // Setters
     public void setPoste(String poste) { this.poste = poste; }
     public void setSalaire(double salaire) { this.salaire = salaire; }
     public void setNom(String nom) { this.nom = nom; }

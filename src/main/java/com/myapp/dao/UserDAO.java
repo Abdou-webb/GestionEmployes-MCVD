@@ -38,7 +38,7 @@ public class UserDAO {
                             rs.getString("password_hash"),
                             rs.getString("role"),
                             rs.getInt("employee_id"),
-                            true // L'utilisateur vient de la DB, donc déjà haché
+                            true // L'utilisateur vient de la DB donc c'est hache deja
                     );
                 }
             }
