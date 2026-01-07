@@ -5,7 +5,9 @@ import com.myapp.dao.EmployeeDAO;
 import com.myapp.dao.TacheDAO;
 import com.myapp.models.Employe;
 import com.myapp.models.Tache;
+import com.myapp.services.EmployeeService;
 import com.myapp.services.TacheService;
+import com.myapp.services.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -19,6 +21,8 @@ public class EmployeeDashboardController {
 
     @FXML private Label lblNom, lblPrenom, lblPoste, lblSalaire, lblPerformance, lblSociete, lblDate;
     private final TacheService tacheService = new TacheService();
+    private final EmployeeService employeeService = new EmployeeService();
+    private final UserService userService = new UserService();
     private static int loggedEmployeeId;
     private final EmployeeDAO employeeDAO = new EmployeeDAO();
     private final TacheDAO tacheDAO = new TacheDAO();
